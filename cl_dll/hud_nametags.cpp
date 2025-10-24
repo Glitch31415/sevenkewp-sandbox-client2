@@ -112,8 +112,8 @@ int CHudNametags::Draw(float flTime)
         if (pClient->curstate.messagenum == 0 && info.x == 0 && info.y == 0 && info.z == 0)
             continue; // hasn't connected yet
 
-		if (!clientVisible && !xray)
-			continue; // Don't show an icon if the player is not in our PVS.
+		//if (!clientVisible && !xray)
+			//continue; // Don't show an icon if the player is not in our PVS.
 
 		if (info.specMode && info.specMode != OBS_ROAMING)
 			continue; // Don't show an icon for spectators

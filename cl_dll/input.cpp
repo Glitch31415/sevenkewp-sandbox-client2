@@ -65,10 +65,15 @@ cvar_t	*cl_pitchspeed;
 cvar_t	*cl_anglespeedkey;
 cvar_t	*cl_vsmoothing;
 
-CVAR_CREATE("cl_waah", "1", FCVAR_ARCHIVE);
-CVAR_CREATE("cl_autojump", "0", FCVAR_ARCHIVE);
-CVAR_CREATE("cl_ctoggleprinttest", "0", FCVAR_ARCHIVE);
-CVAR_CREATE("cl_waah_priority", "0", FCVAR_ARCHIVE);
+CVAR_CREATE( "cl_waah", "0", 0);
+CVAR_CREATE( "cl_autojump", "0", 0);
+CVAR_CREATE( "cl_ctoggleprinttest", "0", 0);
+CVAR_CREATE( "cl_waah_priority", "0", 0);
+
+//ConVar cl_waah("cl_waah", "0", FCVAR_BHL_ARCHIVE, "Jump automatically when ground is hit");
+//ConVar cl_autojump("cl_autojump", "0", FCVAR_BHL_ARCHIVE, "waah");
+//ConVar cl_ctoggleprinttest("cl_ctoggleprinttest", "0", FCVAR_BHL_ARCHIVE, "meow");
+//ConVar cl_waah_priority("cl_waah_priority", "0", FCVAR_BHL_ARCHIVE, "Autojump takes priority over ducktap");
 /*
 ===============================================================================
 
@@ -125,37 +130,6 @@ typedef struct kblist_s
 } kblist_t;
 
 kblist_t *g_kbkeys = NULL;
-
-namespace autofuncs
-{
-static void HandleAutojump(usercmd_t *cmd)
-{
-	static bool s_bJumpWasDownLastFrame = false;
-
-	bool inWater = PM_GetWaterLevel() > 1;
-	bool isWalking = PM_GetMoveType() == MOVETYPE_WALK;
-	bool shouldReleaseDuck = (!PM_GetOnGround() && !inWater && isWalking);
-
-	if (cl_waah.GetBool())
-	{
-		bool shouldReleaseJump = (!PM_GetOnGround() && !inWater && isWalking);
-
-		/*
-		 * Spam pressing and releasing jump if we're stuck in a spot where jumping still results in
-		 * being onground in the end of the frame. Without this check, +jump would remain held and
-		 * when the player exits this spot they would have to release and press the jump button to
-		 * start jumping again. This also helps with exiting water or ladder right onto the ground.
-		 */
-		if (s_bJumpWasDownLastFrame && PM_GetOnGround() && !inWater && isWalking)
-			shouldReleaseJump = true;
-
-		if (shouldReleaseJump)
-			cmd->buttons &= ~IN_JUMP;
-	}
-
-	s_bJumpWasDownLastFrame = ((cmd->buttons & IN_JUMP) != 0);
-}
-}
 
 bool IN_InvertMouse()
 {
@@ -519,15 +493,9 @@ void IN_DuckDown(void)
 {
 	KeyDown(&in_duck);
 	gHUD.m_Spectator.HandleButtonsDown( IN_DUCK );
-	if (cl_ctoggleprinttest.GetBool()) {
-		ConsolePrint("crouching\n");
-	}
+
 }
-void IN_DuckUp(void) { KeyUp(&in_duck); 
-if (cl_ctoggleprinttest.GetBool()) {
-		ConsolePrint("not crouching\n");
-}
-}
+void IN_DuckUp(void) {KeyUp(&in_duck);}
 void IN_ReloadDown(void) {KeyDown(&in_reload);}
 void IN_ReloadUp(void) {KeyUp(&in_reload);}
 void IN_Alt1Down(void) {KeyDown(&in_alt1);}
@@ -779,14 +747,6 @@ void CL_DLLEXPORT CL_CreateMove ( float frametime, struct usercmd_s *cmd, int ac
 	// set button and flag bits
 	//
 	cmd->buttons = CL_ButtonBits( 1 );
-
-	if (cl_waah_priority.GetBool())
-		autofuncs::HandleAutojump(cmd);
-
-	if (!cl_waah_priority.GetBool())
-	{
-		autofuncs::HandleAutojump(cmd);
-	}
 
 	// If they're in a modal dialog, ignore the attack button.
 	if(GetClientVoiceMgr()->IsInSquelchMode())

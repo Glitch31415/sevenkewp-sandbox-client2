@@ -358,7 +358,7 @@ void CHud :: Init( void )
 	m_iLogo = 0;
 	m_iFOV = 0;
 	
-	std::string versionString = UTIL_VarArgs("%d", "Gay Furry Sex Edition :3");
+	std::string versionString = UTIL_VarArgs("%d", SEVENKEWP_VERSION);
 	CVAR_CREATE( "zoom_sensitivity_ratio", "1.2", FCVAR_ARCHIVE );
 	CVAR_CREATE( "cl_autowepswitch", "1", FCVAR_USERINFO|FCVAR_ARCHIVE );
 	CVAR_CREATE( "hlcoop_version", versionString.c_str(), 0);

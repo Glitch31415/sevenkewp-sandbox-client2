@@ -541,9 +541,15 @@ void IN_DuckDown(void)
 {
 	KeyDown(&in_duck);
 	gHUD.m_Spectator.HandleButtonsDown( IN_DUCK );
-
+	if (cl_ctoggleprinttest.GetBool()) {
+		ConsolePrint("crouching\n");
+	}
 }
-void IN_DuckUp(void) {KeyUp(&in_duck);}
+void IN_DuckUp(void) { KeyUp(&in_duck); 
+if (cl_ctoggleprinttest.GetBool()) {
+		ConsolePrint("not crouching\n");
+}
+}
 void IN_ReloadDown(void) {KeyDown(&in_reload);}
 void IN_ReloadUp(void) {KeyUp(&in_reload);}
 void IN_Alt1Down(void) {KeyDown(&in_alt1);}

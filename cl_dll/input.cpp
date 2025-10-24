@@ -69,7 +69,8 @@ cvar_t	*cl_vsmoothing;
 //cvar_t *cl_waah = gEngfuncs.pfnRegisterVariable ( "cl_waah", "0", FCVAR_ARCHIVE );
 
 
-gEngfuncs.pfnRegisterVariable ( "cl_ctoggleprinttest", "0", FCVAR_ARCHIVE );
+//gEngfuncs.pfnRegisterVariable ( "cl_ctoggleprinttest", "0", FCVAR_ARCHIVE );
+CVAR_CREATE ( "cl_ctoggleprinttest", "0", FCVAR_ARCHIVE );
 
 //= CVAR_CREATE("cl_waah", "0", 0);
 

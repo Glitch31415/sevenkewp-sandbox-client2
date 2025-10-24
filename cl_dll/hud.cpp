@@ -401,7 +401,7 @@ void CHud :: Init( void )
 	m_StatusIcons.Init();
 	m_ClientStats.Init();
 	m_Fog.Init();
-	//m_ClientUpdater.Init();
+	m_ClientUpdater.Init();
 	m_Nametags.Init();
 	GetClientVoiceMgr()->Init(&g_VoiceStatusHelper, (vgui::Panel**)&gViewPort);
 

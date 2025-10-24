@@ -137,7 +137,7 @@ static void HandleAutojump(usercmd_t *cmd)
 
 	bool inWater = PM_GetWaterLevel() > 1;
 	bool isWalking = PM_GetMoveType() == MOVETYPE_WALK;
-	bool shouldReleaseDuck = (!PM_GetOnGround() && !inWater && isWalking);
+	//bool shouldReleaseDuck = (!PM_GetOnGround() && !inWater && isWalking);
 
 	//if (CVAR_GET_STRING("cl_waah") == "1")
 	//{

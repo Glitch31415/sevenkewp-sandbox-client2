@@ -1625,6 +1625,10 @@ qboolean PM_CheckWater ()
 		}
 	}
 
+#ifdef CLIENT_DLL
+	s_iWaterlevel = pmove->waterlevel;
+#endif
+
 	return pmove->waterlevel > 1;
 }
 
@@ -2874,6 +2878,10 @@ void PM_CheckFalling( void )
 	{		
 		pmove->flFallVelocity = 0;
 	}
+
+#ifdef CLIENT_DLL
+	s_iOnGround = pmove->onground != -1; // Set flag for bunnyhop, to jump when touch the ground
+#endif
 }
 
 /*
@@ -3164,6 +3172,9 @@ void PM_PlayerMove ( qboolean server )
 		if ( pLadder )
 		{
 			g_onladder = 1;
+#ifdef CLIENT_DLL
+			s_iOnGround = 1; // allow to jump off
+#endif
 		}
 	}
 
@@ -3492,6 +3503,9 @@ void PM_Move ( struct playermove_s *ppmove, int server )
 	{
 		//pmove->friction = 1.0f;
 	}
+#ifdef CLIENT_DLL
+	s_iMoveType = pmove->movetype;
+#endif
 }
 
 int PM_GetVisEntInfo( int ent )

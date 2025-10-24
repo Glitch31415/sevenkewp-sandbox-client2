@@ -25,6 +25,9 @@ extern "C"
 
 #include "vgui_TeamFortressViewport.h"
 
+#include "parsemsg.h"
+#include <stdio.h>
+
 
 extern int g_iAlive;
 

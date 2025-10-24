@@ -3,4 +3,4 @@
 #define SEVENKEWP_VERSION_PATCH 0 // Bump when there is an optional update which doesn't affect the API
 
 #define SEVENKEWP_VERSION \
-((6*10000*10000) + (2 * 10000) + 1)
+((SEVENKEWP_VERSION_MAJOR*10000*10000) + (SEVENKEWP_VERSION_MINOR * 10000) + SEVENKEWP_VERSION_PATCH)

@@ -688,15 +688,15 @@ void V_CalcNormalRefdef ( struct ref_params_s *pparams )
 	}
 
 	// Add in the punchangle, if any
-	VectorAdd ( pparams->viewangles, pparams->punchangle, pparams->viewangles );
+	//VectorAdd ( pparams->viewangles, pparams->punchangle, pparams->viewangles );
 
 	// Include client side punch, too
-	VectorAdd ( pparams->viewangles, (float *)&ev_punchangle, pparams->viewangles);
-
+	//VectorAdd ( pparams->viewangles, (float *)&ev_punchangle, pparams->viewangles);
+	// remove the rest of the recoil
 	V_DropPunchAngle ( pparams->frametime, (float *)&ev_punchangle );
 
 	v_punchangle = ev_punchangle;
-	VectorAdd(v_punchangle, pparams->punchangle, v_punchangle);
+	//VectorAdd(v_punchangle, pparams->punchangle, v_punchangle);
 
 	// smooth out stair step ups
 #if 1
@@ -1705,7 +1705,7 @@ Client side punch effect
 */
 void V_PunchAxis( int axis, float punch )
 {
-	//ev_punchangle[ axis ] = punch; // remove most/all recoil types
+	//ev_punchangle[ axis ] = punch; // remove most recoil types
 }
 
 /*

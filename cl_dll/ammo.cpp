@@ -1497,7 +1497,7 @@ void DrawCrossHair(float accuracyX, float accuracyY, int len, int thick, int bor
 		gEngfuncs.pfnFillRGBABlend(centerX - bhthick, centerY - bhthick, bthick, bthick, r, g, b, a);
 	}
 
-	UnpackRGB(r, g, b, RGB_YELLOWISH);
+	UnpackRGB(r, g, b, RGB_PINKISH);
 
 	// horizontal
 	gEngfuncs.pfnFillRGBABlend(centerX - (gapX + len), centerY - hthick, len, thick, r, g, b, a);

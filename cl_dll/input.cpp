@@ -73,7 +73,7 @@ cvar_t	*cl_vsmoothing;
 
 
 //gEngfuncs.pfnRegisterVariable ( "cl_ctoggleprinttest", "0", FCVAR_ARCHIVE );
-CVAR_CREATE ( "cl_ctoggleprinttest", "0", FCVAR_ARCHIVE );
+
 
 //= CVAR_CREATE("cl_waah", "0", 0);
 
@@ -1038,6 +1038,7 @@ void InitInput (void)
 	gEngfuncs.pfnAddCommand ("-graph", IN_GraphUp);
 	gEngfuncs.pfnAddCommand ("+break",IN_BreakDown);
 	gEngfuncs.pfnAddCommand ("-break",IN_BreakUp);
+	CVAR_CREATE ( "cl_ctoggleprinttest", "0", 0 );
 
 	lookstrafe			= gEngfuncs.pfnRegisterVariable ( "lookstrafe", "0", FCVAR_ARCHIVE );
 	lookspring			= gEngfuncs.pfnRegisterVariable ( "lookspring", "0", FCVAR_ARCHIVE );

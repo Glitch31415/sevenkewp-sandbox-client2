@@ -6,6 +6,7 @@
 // rights reserved.
 #include "hud.h"
 #include "cl_util.h"
+#include "cl_dll.h"
 #include "camera.h"
 extern "C"
 {

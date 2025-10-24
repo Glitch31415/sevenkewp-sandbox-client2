@@ -155,28 +155,6 @@ static void HandleAutojump(usercmd_t *cmd)
 
 	s_bJumpWasDownLastFrame = ((cmd->buttons & IN_JUMP) != 0);
 }
-
-static void HandleDucktap(usercmd_t *cmd)
-{
-	static bool s_bDuckWasDownLastFrame = false;
-
-	bool inWater = PM_GetWaterLevel() > 1;
-	bool isWalking = PM_GetMoveType() == MOVETYPE_WALK;
-	bool duckIsPressed = in_duck.state & 1;
-
-	bool shouldReleaseDuck = (!PM_GetOnGround() && !inWater && isWalking && !duckIsPressed);
-
-	if (s_bDuckWasDownLastFrame && PM_GetOnGround() && !inWater && isWalking)
-		shouldReleaseDuck = true;
-
-	if (shouldReleaseDuck)
-	{
-		cmd->buttons &= ~IN_DUCK;
-		in_duck.state &= 0;
-	}
-
-	s_bDuckWasDownLastFrame = ((cmd->buttons & IN_DUCK) != 0);
-}
 }
 
 bool IN_InvertMouse()
@@ -805,12 +783,7 @@ void CL_DLLEXPORT CL_CreateMove ( float frametime, struct usercmd_s *cmd, int ac
 	if (cl_waah_priority.GetBool())
 		autofuncs::HandleAutojump(cmd);
 
-	if (in_ducktap.state & 1)
-	{
-		cmd->buttons |= IN_DUCK;
-		autofuncs::HandleDucktap(cmd); // Ducktap takes priority over autojump
-	}
-	else if (!cl_waah_priority.GetBool())
+	if (!cl_waah_priority.GetBool())
 	{
 		autofuncs::HandleAutojump(cmd);
 	}

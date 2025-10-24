@@ -276,6 +276,21 @@ static char grgchTextureType[CTEXTURESMAX];
 int g_onladder = 0;
 int g_footstepVariety = 2;
 
+int PM_GetOnGround()
+{
+	return s_iOnGround;
+}
+
+int PM_GetWaterLevel()
+{
+	return s_iWaterlevel;
+}
+
+int PM_GetMoveType()
+{
+	return s_iMoveType;
+}
+
 void PM_SwapTextures( int i, int j )
 {
 	char chTemp;

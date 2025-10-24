@@ -773,6 +773,10 @@ void CL_DLLEXPORT CL_CreateMove ( float frametime, struct usercmd_s *cmd, int ac
 	//
 	cmd->buttons = CL_ButtonBits( 1 );
 
+
+	autofuncs::HandleAutojump(cmd); // maybe works?
+
+
 	// If they're in a modal dialog, ignore the attack button.
 	if(GetClientVoiceMgr()->IsInSquelchMode())
 		cmd->buttons &= ~IN_ATTACK;

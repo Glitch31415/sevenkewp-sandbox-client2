@@ -528,12 +528,12 @@ void IN_DuckDown(void)
 {
 	KeyDown(&in_duck);
 	gHUD.m_Spectator.HandleButtonsDown( IN_DUCK );
-	if (CVAR_GET_STRING("cl_ctoggleprinttest") == "1") {
+	if ((int)CVAR_GET_FLOAT("cl_ctoggleprinttest") == 1) {
 		ConsolePrint("crouching\n");
 	}
 }
 void IN_DuckUp(void) { KeyUp(&in_duck); 
-if (CVAR_GET_STRING("cl_ctoggleprinttest") == "1") {
+if ((int)CVAR_GET_FLOAT("cl_ctoggleprinttest") == 1) {
 		ConsolePrint("not crouching\n");
 }
 }

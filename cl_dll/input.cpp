@@ -1039,7 +1039,6 @@ void InitInput (void)
 	gEngfuncs.pfnAddCommand ("+break",IN_BreakDown);
 	gEngfuncs.pfnAddCommand ("-break",IN_BreakUp);
 	CVAR_CREATE ( "cl_ctoggleprinttest", "0", 0 );
-	CVAR_CREATE ( "aghl_version", "Gay Furry Sex Edition :3", 0 );
 
 	lookstrafe			= gEngfuncs.pfnRegisterVariable ( "lookstrafe", "0", FCVAR_ARCHIVE );
 	lookspring			= gEngfuncs.pfnRegisterVariable ( "lookspring", "0", FCVAR_ARCHIVE );

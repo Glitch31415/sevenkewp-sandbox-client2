@@ -273,6 +273,10 @@ static int gcTextures = 0;
 static char grgszTextureName[CTEXTURESMAX][CBTEXTURENAMEMAX];	
 static char grgchTextureType[CTEXTURESMAX];
 
+static int s_iOnGround;
+static int s_iWaterlevel;
+static int s_iMoveType;
+
 int g_onladder = 0;
 int g_footstepVariety = 2;
 

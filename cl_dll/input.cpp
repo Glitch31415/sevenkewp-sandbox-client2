@@ -66,7 +66,7 @@ cvar_t	*cl_pitchspeed;
 cvar_t	*cl_anglespeedkey;
 cvar_t	*cl_vsmoothing;
 
-cvar_t *cl_waah = gEngfuncs.pfnRegisterVariable ( "cl_waah", "0", FCVAR_ARCHIVE );
+//cvar_t *cl_waah = gEngfuncs.pfnRegisterVariable ( "cl_waah", "0", FCVAR_ARCHIVE );
 
 
 //cl_waah		= gEngfuncs.pfnRegisterVariable ( "cl_waah", "0", FCVAR_ARCHIVE );
@@ -139,8 +139,8 @@ static void HandleAutojump(usercmd_t *cmd)
 	bool isWalking = PM_GetMoveType() == MOVETYPE_WALK;
 	bool shouldReleaseDuck = (!PM_GetOnGround() && !inWater && isWalking);
 
-	if (CVAR_GET_STRING("cl_waah") == "1")
-	{
+	//if (CVAR_GET_STRING("cl_waah") == "1")
+	//{
 		bool shouldReleaseJump = (!PM_GetOnGround() && !inWater && isWalking);
 
 		/*
@@ -154,7 +154,7 @@ static void HandleAutojump(usercmd_t *cmd)
 
 		if (shouldReleaseJump)
 			cmd->buttons &= ~IN_JUMP;
-	}
+	//}
 
 	s_bJumpWasDownLastFrame = ((cmd->buttons & IN_JUMP) != 0);
 }

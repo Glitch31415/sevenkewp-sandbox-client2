@@ -6,7 +6,6 @@
 // rights reserved.
 #include "hud.h"
 #include "cl_util.h"
-#include "cl_dll.h"
 #include "camera.h"
 extern "C"
 {
@@ -67,8 +66,7 @@ cvar_t	*cl_pitchspeed;
 cvar_t	*cl_anglespeedkey;
 cvar_t	*cl_vsmoothing;
 
-gEngfuncs.pfnRegisterVariable( (char*)"cl_waah", (char*)"0", 0);
-//cl_waah = CVAR_CREATE("cl_waah", "0", 0);
+cvar_t *cl_waah = CVAR_CREATE("cl_waah", "0", 0);
 
 /*
 ===============================================================================

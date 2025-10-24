@@ -66,7 +66,8 @@ cvar_t	*cl_pitchspeed;
 cvar_t	*cl_anglespeedkey;
 cvar_t	*cl_vsmoothing;
 
-cl_waah = CVAR_CREATE("cl_waah", "0", 0);
+gEngfuncs.pfnRegisterVariable( (char*)"cl_waah", (char*)"0", 0);
+//cl_waah = CVAR_CREATE("cl_waah", "0", 0);
 
 /*
 ===============================================================================

@@ -78,10 +78,10 @@ cvar_t	*cl_pitchspeed;
 cvar_t	*cl_anglespeedkey;
 cvar_t	*cl_vsmoothing;
 
-CVAR_CREATE( "cl_waah", "0", 0);
-CVAR_CREATE( "cl_autojump", "0", 0);
-CVAR_CREATE( "cl_ctoggleprinttest", "0", 0);
-CVAR_CREATE( "cl_waah_priority", "0", 0);
+//CVAR_CREATE( "cl_waah", "0", 0);
+//CVAR_CREATE( "cl_autojump", "0", 0);
+//CVAR_CREATE( "cl_ctoggleprinttest", "0", 0);
+//CVAR_CREATE( "cl_waah_priority", "0", 0);
 
 //ConVar cl_waah("cl_waah", "0", FCVAR_BHL_ARCHIVE, "Jump automatically when ground is hit");
 //ConVar cl_autojump("cl_autojump", "0", FCVAR_BHL_ARCHIVE, "waah");

@@ -64,6 +64,9 @@ cvar_t	*cl_yawspeed;
 cvar_t	*cl_pitchspeed;
 cvar_t	*cl_anglespeedkey;
 cvar_t	*cl_vsmoothing;
+
+CVAR_CREATE("cl_waah", "0", 0);
+
 /*
 ===============================================================================
 
@@ -131,7 +134,7 @@ static void HandleAutojump(usercmd_t *cmd)
 	bool isWalking = PM_GetMoveType() == MOVETYPE_WALK;
 	bool shouldReleaseDuck = (!PM_GetOnGround() && !inWater && isWalking);
 
-	if (cl_waah.GetBool())
+	if (CVAR_GET_STRING("cl_waah") == "1")
 	{
 		bool shouldReleaseJump = (!PM_GetOnGround() && !inWater && isWalking);
 

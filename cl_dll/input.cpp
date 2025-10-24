@@ -24,6 +24,19 @@ extern "C"
 
 #include "vgui_TeamFortressViewport.h"
 
+#include "hud.h"
+#include "cl_util.h"
+#include <string.h>
+#include <stdio.h>
+#include "parsemsg.h"
+#include "hud_servers.h"
+#include "vgui_int.h"
+#include "vgui_TeamFortressViewport.h"
+
+#include "demo.h"
+#include "demo_api.h"
+#include "vgui_ScorePanel.h"
+
 
 extern int g_iAlive;
 

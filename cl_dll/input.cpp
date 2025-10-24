@@ -21,6 +21,7 @@ extern "C"
 #include <string.h>
 #include <ctype.h>
 #include "Exports.h"
+#include "pm_shared.h"
 
 #include "vgui_TeamFortressViewport.h"
 

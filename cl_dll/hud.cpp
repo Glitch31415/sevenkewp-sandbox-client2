@@ -600,7 +600,7 @@ void CHud::WorldInit(void) {
 	// assumption: number_1, number_2, etc, are all listed and loaded sequentially
 	m_HUD_number_0 = GetSpriteIndex("number_0");
 
-	m_iFontHeight = (m_rgrcRects[m_HUD_number_0].bottom - m_rgrcRects[m_HUD_number_0].top)*2;
+	m_iFontHeight = (m_rgrcRects[m_HUD_number_0].bottom - m_rgrcRects[m_HUD_number_0].top);
 
 	m_Ammo.VidInit();
 	m_Health.VidInit();

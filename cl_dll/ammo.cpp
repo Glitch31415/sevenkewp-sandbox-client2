@@ -1529,17 +1529,17 @@ void CHudAmmo::DrawDynamicCrosshair() {
 	}
 
 	if (!m_pWeapon) {
-		if (m_hud_crosshair_mode->value >= 2) {
+		//if (m_hud_crosshair_mode->value >= 2) {
 			DrawCrossHair(0, 0, len, width, border);
-		}
+		//}
 		return;
 	}
 
 	WEAPON* pw = m_pWeapon; // shorthand
 
-	if (!pw->hCrosshair && m_hud_crosshair_mode->value != 2) {
-		return;
-	}
+	//if (!pw->hCrosshair && m_hud_crosshair_mode->value != 2) {
+		//return;
+	//}
 
 	if (pw->hZoomedCrosshair && IsWeaponZoomed() && (pw->iFlagsEx & WEP_FLAG_USE_ZOOM_CROSSHAIR))
 		return;

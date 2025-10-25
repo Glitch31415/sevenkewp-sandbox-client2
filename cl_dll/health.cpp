@@ -150,7 +150,7 @@ void CHudHealth::GetPainColor( int &r, int &g, int &b )
 	if (iHealth > 100)
 		iHealth = 100;
 
-	g = iHealth * (float)((int)255 / (int)100);
+	g = (int)((float)iHealth * (float)((int)255 / (int)100));
 	//g = 255;
 	r = 255 - g;
 	b = 0;

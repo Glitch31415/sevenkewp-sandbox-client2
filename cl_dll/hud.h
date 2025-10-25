@@ -343,7 +343,7 @@ public:
 	int MsgFunc_SayText( const char *pszName, int iSize, void *pbuf );
 	void SayTextPrint( const char *pszBuf, int iBufSize, int clientIndex = -1 );
 	void EnsureTextFitsInOneLineAndWrapIfHaveTo( int line );
-	int MaxLines( 100 ); // max lines client wants to see
+	int MaxLines(); // max lines client wants to see
 	int ChatHeight(bool maxlines); // max height of all chat lines + some padding
 	void UpdateChatPosition();
 	void SetChatInputPos(int* x, int* y);

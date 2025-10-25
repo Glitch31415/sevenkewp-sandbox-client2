@@ -114,6 +114,9 @@ int CHudBattery::Draw(float flTime)
 
 	
 	g = (int)((float)iHealth * (float)((int)255 / (int)m_iBatMax));
+
+	if (iHealth == m_iBatMax)
+		g = 255;
 	//g = 255;
 	r = 255 - g;
 	b = 0;

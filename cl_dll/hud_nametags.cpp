@@ -99,7 +99,7 @@ int CHudNametags::Draw(float flTime)
     int screenW = ScreenWidth;
     int screenH = ScreenHeight;
 
-	for (int i = 0; i < pparams->max_entities; i++)
+	for (int i = 0; i < MAX_EDICTS; i++)
 	{
 		cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i + 1);
         extra_player_info_t& info = g_PlayerExtraInfo[i + 1];

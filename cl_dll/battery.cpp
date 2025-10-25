@@ -142,6 +142,8 @@ int CHudBattery::Draw(float flTime)
 	else
 		a = MIN_ALPHA;
 
+	a = 255; // max brightness
+
 	ScaleColors(r, g, b, a );
 	
 	int iOffset = (m_prc1->bottom - m_prc1->top)/6;

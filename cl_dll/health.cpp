@@ -188,7 +188,7 @@ int CHudHealth::Draw(float flTime)
 		a = MIN_ALPHA;
 
 	// If health is getting low, make it bright red
-	if (m_iHealth <= 15)
+	//if (m_iHealth <= 15)
 		a = 255;
 		
 	GetPainColor( r, g, b );

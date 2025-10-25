@@ -1475,7 +1475,7 @@ void DrawCrossHair(float accuracyX, float accuracyY, int len, int thick, int bor
 	if (gapX == minGap && gapY == minGap) {
 		//len *= 0.75f;
 	}
-	a = 200;
+	a = 255;
 	
 
 	if (border > 0) {

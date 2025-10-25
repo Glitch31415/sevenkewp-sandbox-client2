@@ -1541,8 +1541,8 @@ void CHudAmmo::DrawDynamicCrosshair() {
 		//return;
 	//}
 
-	if (pw->hZoomedCrosshair && IsWeaponZoomed() && (pw->iFlagsEx & WEP_FLAG_USE_ZOOM_CROSSHAIR))
-		return;
+	//if (pw->hZoomedCrosshair && IsWeaponZoomed() && (pw->iFlagsEx & WEP_FLAG_USE_ZOOM_CROSSHAIR))
+		//return;
 
 	if (g_crosshair_active) {
 		static wrect_t nullrc;

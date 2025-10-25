@@ -109,7 +109,7 @@ int CHudBattery::Draw(float flTime)
 		iHealth = 0;
 	if (iHealth > m_iBatMax)
 		iHealth = m_iBatMax;
-	if (m_iBatMax == 0) {
+	if (m_iBatMax == 0)
 		m_iBatMax = 100;
 
 	

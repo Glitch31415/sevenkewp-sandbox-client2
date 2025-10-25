@@ -1513,7 +1513,7 @@ void DrawCrossHair(float accuracyX, float accuracyY, int len, int thick, int bor
 }
 
 void CHudAmmo::DrawDynamicCrosshair() {
-	if (m_hud_crosshair_mode->value <= 0 || !gHUD.IsSevenKewpServer())
+	if (m_hud_crosshair_mode->value <= 0)
 		return;
 
 	int len = clamp(m_hud_crosshair_length->value, 1, 1000);

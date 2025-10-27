@@ -694,7 +694,7 @@ public:
 	int GetNumWidth(int iNumber, int iFlags);
 
 	// for disabling features that could be used to cheat on vanilla servers
-	inline bool IsSevenKewpServer() { true }
+	inline bool IsSevenKewpServer() { return true; }
 
 private:
 	// the memory for these arrays are allocated in the first call to CHud::VidInit(), when the hud.txt and associated sprites are loaded.

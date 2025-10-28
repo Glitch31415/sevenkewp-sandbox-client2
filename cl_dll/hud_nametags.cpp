@@ -179,7 +179,7 @@ int CHudNametags::Draw(float flTime)
         }
         else {
             const char* pad = showHpOnly ? "" : " ";
-            hpStr = hp ? UTIL_VarArgs("%s%d%s%s%%", pad, (int)hp, pad, pClient->model->name) : UTIL_VarArgs("%s%s%%", pad, pClient->model->name);
+            hpStr = hp ? UTIL_VarArgs("%s%d%s%s%%", pad, (int)hp, pad, pClient->model->name) : UTIL_VarArgs("%s - %s%%", pad, pClient->model->name);
             GetConsoleStringSize(hpStr, &hpWidth, &hpHeight);
         }
 

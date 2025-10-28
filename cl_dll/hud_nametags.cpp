@@ -164,7 +164,7 @@ int CHudNametags::Draw(float flTime)
 
         bool showHpOnly = m_HUD_nametag_hp->value == 2;
 
-        const char* name = showHpOnly ? "" : (info.classname + " " + info.targetname + " " + g_PlayerInfoList[i + 1].name);
+        const char* name = showHpOnly ? "" : (g_PlayerInfoList[i + 1].classname + " " + g_PlayerInfoList[i + 1].targetname + " " + g_PlayerInfoList[i + 1].name);
         int nameWidth, nameHeight;
         GetConsoleStringSize(name, &nameWidth, &nameHeight);
         

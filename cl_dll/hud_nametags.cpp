@@ -252,9 +252,9 @@ int CHudNametags::Draw(float flTime)
         memcpy(lastOri, targetOri, sizeof(lastOri));
 
         for (int i = 0; i < amount; i++) {
+            cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i + 1);
             if (!pClient)
                 continue;
-            cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i + 1);
             bool clientVisible = pClient->curstate.messagenum >= localPlayer->curstate.messagenum;
 
             if (clientVisible) {

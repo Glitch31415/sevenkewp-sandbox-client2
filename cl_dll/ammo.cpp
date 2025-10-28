@@ -876,6 +876,9 @@ int CHudAmmo::MsgFunc_WeaponListX(const char* pszName, int iSize, void* pbuf)
 // set up parameters for custom weapon prediction
 int CHudAmmo::MsgFunc_CustomWep(const char* pszName, int iSize, void* pbuf)
 {
+	if (!((sevenkewpVersion[0] && atoi(sevenkewpVersion) > 0))) {
+		return 0;
+	}
 	BEGIN_READ(pbuf, iSize);
 
 	int weaponId = READ_BYTE();
@@ -975,6 +978,9 @@ int CHudAmmo::MsgFunc_CustomWep(const char* pszName, int iSize, void* pbuf)
 
 int CHudAmmo::MsgFunc_CustomWepEv(const char* pszName, int iSize, void* pbuf)
 {
+	if (!((sevenkewpVersion[0] && atoi(sevenkewpVersion) > 0))) {
+		return 0;
+	}
 	BEGIN_READ(pbuf, iSize);
 
 	int weaponId = READ_BYTE();

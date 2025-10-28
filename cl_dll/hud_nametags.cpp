@@ -103,7 +103,7 @@ int CHudNametags::Draw(float flTime)
 	{
 		cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i + 1);
         if (!pClient)
-            continue
+            continue;
         extra_player_info_t& info = g_PlayerExtraInfo[i + 1];
 
         //if (!pClient || !g_PlayerInfoList[i + 1].name || !g_PlayerInfoList[i + 1].name[0])
@@ -247,7 +247,7 @@ int CHudNametags::Draw(float flTime)
         for (int i = 0; i < 4096; i++) {
             cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i + 1);
             if (!pClient)
-                continue
+                continue;
             bool clientVisible = pClient->curstate.messagenum >= localPlayer->curstate.messagenum;
 
             if (clientVisible) {

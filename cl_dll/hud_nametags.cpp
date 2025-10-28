@@ -259,13 +259,13 @@ hpStr = UTIL_VarArgs("%s %d%% %s", g_PlayerInfoList[i].name, (int)hp, pClient->m
                 continue;
             bool clientVisible = pClient->curstate.messagenum >= localPlayer->curstate.messagenum;
 
-            //if (clientVisible) {
+            if (clientVisible) {
                 targetOri[i] = pClient->origin;
-            //}
-            //else {
-                //extra_player_info_t& info = g_PlayerExtraInfo[i];
-                //targetOri[i] = Vector(info.x, info.y, info.z);
-            //}
+            }
+            else {
+                extra_player_info_t& info = g_PlayerExtraInfo[i];
+                targetOri[i] = Vector(info.x, info.y, info.z);
+            }
         } 
     }
 	

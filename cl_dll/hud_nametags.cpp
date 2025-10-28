@@ -109,6 +109,8 @@ int CHudNametags::Draw(float flTime)
 
         if (!pClient)
             continue;
+        if (m_HUD_nametags->value != 1337 && !(pClient->player))
+            continue;
 
         bool clientVisible = pClient->curstate.messagenum >= localPlayer->curstate.messagenum;
 
@@ -254,6 +256,8 @@ int CHudNametags::Draw(float flTime)
         for (int i = 0; i < amount; i++) {
             cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i + 1);
             if (!pClient)
+                continue;
+            if (m_HUD_nametags->value != 1337 && !(pClient->player))
                 continue;
             bool clientVisible = pClient->curstate.messagenum >= localPlayer->curstate.messagenum;
 

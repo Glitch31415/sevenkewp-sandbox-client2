@@ -1520,6 +1520,11 @@ void CHudAmmo::DrawDynamicCrosshair() {
 	int width = clamp(m_hud_crosshair_width->value, 1, 1000);
 	int border = clamp(m_hud_crosshair_border->value, 0, 1000);
 
+
+	if (serverVersion == 0) {
+
+	}
+	else {
 	if (m_hud_crosshair_width->value == -1) {
 		// auto size
 		width = 2;
@@ -1607,6 +1612,7 @@ void CHudAmmo::DrawDynamicCrosshair() {
 	}
 
 	DrawCrossHair(accuracyX, accuracyY, len, width, border);
+	}
 }
 
 

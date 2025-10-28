@@ -125,7 +125,7 @@ int CHudNametags::Draw(float flTime)
         float lerpt = (now - lastLerp) / lerpTime;
         Vector lerpori = lastOri[i] + (targetOri[i] - lastOri[i]) * lerpt;
 
-        Vector ori = clientVisible ? pClient->origin : lerpori;
+        Vector ori = pClient->origin;//clientVisible ? pClient->origin : lerpori;
 		Vector tagOri = ori + Vector(0, 0, 40);
 
         bool canSeePlayer = false;

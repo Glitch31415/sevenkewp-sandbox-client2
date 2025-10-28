@@ -183,12 +183,18 @@ int CHudNametags::Draw(float flTime)
         else {
             const char* pad = showHpOnly ? "" : " ";
             //hpStr = hp ? UTIL_VarArgs("%s%d%%", pad, (int)hp) : " DEAD";
-            if (g_PlayerInfoList[i].name == pClient->model->name) {
-                hpStr = UTIL_VarArgs("%d%% %s", (int)hp, pClient->model->name);
+            if (m_HUD_nametags->value == 1337) {
+                if (g_PlayerInfoList[i].name == pClient->model->name) {
+                    hpStr = UTIL_VarArgs("%s %d%%", (int)hp, pClient->model->name);
+                }
+                else {
+                    hpStr = UTIL_VarArgs("%s %s %d%%", g_PlayerInfoList[i].name, pClient->model->name, (int)hp);
+                }
             }
             else {
-                hpStr = UTIL_VarArgs("%s %d%% %s", g_PlayerInfoList[i].name, (int)hp, pClient->model->name);
+                hpStr = UTIL_VarArgs("%s %d%%", g_PlayerInfoList[i].name, (int)hp);
             }
+            
             GetConsoleStringSize(hpStr, &hpWidth, &hpHeight);
         }
 

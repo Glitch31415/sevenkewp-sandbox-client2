@@ -164,7 +164,7 @@ int CHudNametags::Draw(float flTime)
         
         bool showHpOnly = m_HUD_nametag_hp->value == 2;
 
-        const char* name = showHpOnly ? "" : pClient->model->name;//(pClient->classname + " " + pClient->targetname + " " + g_PlayerInfoList[i].name);
+        const char* name = showHpOnly ? "" : g_PlayerInfoList[i].name;
         int nameWidth, nameHeight;
         GetConsoleStringSize(name, &nameWidth, &nameHeight);
         
@@ -179,7 +179,7 @@ int CHudNametags::Draw(float flTime)
         }
         else {
             const char* pad = showHpOnly ? "" : " ";
-            hpStr = hp ? UTIL_VarArgs("%s%d%%", pad, (int)hp) : "";
+            hpStr = hp ? UTIL_VarArgs("%s%d%s%s%%", pad, (int)hp, pad, pClient->model->name) : UTIL_VarArgs("%s%s%%", pad, pClient->model->name);
             GetConsoleStringSize(hpStr, &hpWidth, &hpHeight);
         }
 

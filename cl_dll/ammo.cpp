@@ -1521,7 +1521,7 @@ void CHudAmmo::DrawDynamicCrosshair() {
 	int border = clamp(m_hud_crosshair_border->value, 0, 1000);
 
 
-	if (serverVersion == 0) {
+	if (!(UTIL_AreSevenKewpVersionsCompatible())) {
 
 	}
 	else {

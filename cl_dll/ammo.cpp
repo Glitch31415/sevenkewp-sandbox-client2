@@ -1521,11 +1521,10 @@ void CHudAmmo::DrawDynamicCrosshair() {
 	int border = clamp(m_hud_crosshair_border->value, 0, 1000);
 
 
-	if (!(UTIL_AreSevenKewpVersionsCompatible())) {
-
-	}
-	else {
-	if (m_hud_crosshair_width->value == -1) {
+	const char* sevenkewpVersion = gEngfuncs.ServerInfo_ValueForKey("skv");
+	m_sevenkewpVersion = atoi(sevenkewpVersion);
+	if (sevenkewpVersion[0] && m_sevenkewpVersion > 0) {
+		if (m_hud_crosshair_width->value == -1) {
 		// auto size
 		width = 2;
 		if (ScreenHeight <= 768) {
@@ -1613,6 +1612,10 @@ void CHudAmmo::DrawDynamicCrosshair() {
 
 	DrawCrossHair(accuracyX, accuracyY, len, width, border);
 	}
+	else {
+		DrawCrossHair(1, 1, len, width, border);
+	}
+	
 }
 
 

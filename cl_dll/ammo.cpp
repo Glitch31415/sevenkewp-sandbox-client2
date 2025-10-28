@@ -1522,8 +1522,7 @@ void CHudAmmo::DrawDynamicCrosshair() {
 
 
 	const char* sevenkewpVersion = gEngfuncs.ServerInfo_ValueForKey("skv");
-	m_sevenkewpVersion = atoi(sevenkewpVersion);
-	if (sevenkewpVersion[0] && m_sevenkewpVersion > 0) {
+	if (sevenkewpVersion[0] && atoi(sevenkewpVersion) > 0) {
 		if (m_hud_crosshair_width->value == -1) {
 		// auto size
 		width = 2;

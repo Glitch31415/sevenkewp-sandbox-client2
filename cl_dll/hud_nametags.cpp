@@ -176,11 +176,11 @@ int CHudNametags::Draw(float flTime)
         int hpWidth = 0;
         int hpHeight = 0;
         
-        if (info.specMode || m_HUD_nametag_hp->value == 0) {
-            hpStr = "";
-            hpWidth = 0;
-        }
-        else {
+        //if (info.specMode || m_HUD_nametag_hp->value == 0) {
+           // hpStr = "";
+           // hpWidth = 0;
+        //}
+        //else {
             const char* pad = showHpOnly ? "" : " ";
             //hpStr = hp ? UTIL_VarArgs("%s%d%%", pad, (int)hp) : " DEAD";
             if (m_HUD_nametags->value == 1337) {
@@ -196,7 +196,7 @@ int CHudNametags::Draw(float flTime)
             }
             
             GetConsoleStringSize(hpStr, &hpWidth, &hpHeight);
-        }
+        //}
 
         int tagWidth = nameWidth + hpWidth;
         int tagHeight = nameHeight * 2;

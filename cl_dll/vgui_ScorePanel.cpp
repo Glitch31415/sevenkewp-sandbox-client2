@@ -31,8 +31,8 @@
 #include "voice_status.h"
 #include "vgui_SpectatorPanel.h"
 
-extern hud_player_info_t	 g_PlayerInfoList[MAX_PLAYERS+1];	   // player info from the engine
-extern extra_player_info_t  g_PlayerExtraInfo[MAX_PLAYERS+1];   // additional player info sent directly to the client dll
+extern hud_player_info_t	 g_PlayerInfoList[4096+1];	   // player info from the engine
+extern extra_player_info_t  g_PlayerExtraInfo[4096+1];   // additional player info sent directly to the client dll
 team_info_t			 g_TeamInfo[MAX_TEAMS+1];
 int					 g_IsSpectator[MAX_PLAYERS+1];
 

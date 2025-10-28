@@ -161,10 +161,10 @@ int CHudNametags::Draw(float flTime)
 
         //int m_iBeam = gEngfuncs.pEventAPI->EV_FindModelIndex("sprites/smoke.spr");
         //gEngfuncs.pEfxAPI->R_BeamPoints(headOri, v_origin, m_iBeam, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1);
-
+        
         bool showHpOnly = m_HUD_nametag_hp->value == 2;
 
-        const char* name = showHpOnly ? "" : (pClient->classname + " " + pClient->targetname + " " + g_PlayerInfoList[i].name);
+        const char* name = showHpOnly ? "" : g_PlayerInfoList[i].name + " " + pClient.model.name;//(pClient->classname + " " + pClient->targetname + " " + g_PlayerInfoList[i].name);
         int nameWidth, nameHeight;
         GetConsoleStringSize(name, &nameWidth, &nameHeight);
         

@@ -99,9 +99,11 @@ int CHudNametags::Draw(float flTime)
     int screenW = ScreenWidth;
     int screenH = ScreenHeight;
 
-	for (int i = 0; i < 900; i++)
+	for (int i = 0; i < 4096; i++)
 	{
 		cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i + 1);
+        if (!pClient)
+            continue
         extra_player_info_t& info = g_PlayerExtraInfo[i + 1];
 
         //if (!pClient || !g_PlayerInfoList[i + 1].name || !g_PlayerInfoList[i + 1].name[0])
@@ -242,8 +244,10 @@ int CHudNametags::Draw(float flTime)
 
         memcpy(lastOri, targetOri, sizeof(lastOri));
 
-        for (int i = 0; i < 900; i++) {
+        for (int i = 0; i < 4096; i++) {
             cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i + 1);
+            if (!pClient)
+                continue
             bool clientVisible = pClient->curstate.messagenum >= localPlayer->curstate.messagenum;
 
             if (clientVisible) {

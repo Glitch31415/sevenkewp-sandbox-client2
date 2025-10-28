@@ -7737,8 +7737,8 @@ void CBasePlayer::DebugThink() {
 }
 
 bool CBasePlayer::IsSevenKewpClient() {
-	//return true;
-	return UTIL_AreSevenKewpVersionsCompatible(m_sevenkewpVersion, SEVENKEWP_VERSION);
+	return false; // shit is broken
+	//return UTIL_AreSevenKewpVersionsCompatible(m_sevenkewpVersion, SEVENKEWP_VERSION);
 }
 
 void CBasePlayer::SetThirdPersonWeaponAnim(int sequence, float fps) {

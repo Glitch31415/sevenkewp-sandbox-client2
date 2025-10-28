@@ -101,10 +101,10 @@ int CHudNametags::Draw(float flTime)
 
 	for (int i = 0; i < 4096; i++)
 	{
-		cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i + 1);
+		cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i);
         if (!pClient)
             continue;
-        extra_player_info_t& info = g_PlayerExtraInfo[i + 1];
+        extra_player_info_t& info = g_PlayerExtraInfo[i];
 
         //if (!pClient || !g_PlayerInfoList[i + 1].name || !g_PlayerInfoList[i + 1].name[0])
             //continue;
@@ -164,7 +164,7 @@ int CHudNametags::Draw(float flTime)
 
         bool showHpOnly = m_HUD_nametag_hp->value == 2;
 
-        const char* name = showHpOnly ? "" : (pClient.pev->classname + " " + pClient.pev->targetname + " " + g_PlayerInfoList[i + 1].name);
+        const char* name = showHpOnly ? "" : (pClient->classname + " " + pClient->targetname + " " + g_PlayerInfoList[i].name);
         int nameWidth, nameHeight;
         GetConsoleStringSize(name, &nameWidth, &nameHeight);
         
@@ -245,7 +245,7 @@ int CHudNametags::Draw(float flTime)
         memcpy(lastOri, targetOri, sizeof(lastOri));
 
         for (int i = 0; i < 4096; i++) {
-            cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i + 1);
+            cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i);
             if (!pClient)
                 continue;
             bool clientVisible = pClient->curstate.messagenum >= localPlayer->curstate.messagenum;
@@ -254,7 +254,7 @@ int CHudNametags::Draw(float flTime)
                 targetOri[i] = pClient->origin;
             }
             else {
-                extra_player_info_t& info = g_PlayerExtraInfo[i + 1];
+                extra_player_info_t& info = g_PlayerExtraInfo[i];
                 targetOri[i] = Vector(info.x, info.y, info.z);
             }
         } 

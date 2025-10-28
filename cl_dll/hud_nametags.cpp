@@ -101,21 +101,19 @@ int CHudNametags::Draw(float flTime)
 
 	for (int i = 0; i < 4096; i++)
 	{
-		cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i);
+		cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i + 1);
+        extra_player_info_t& info = g_PlayerExtraInfo[i + 1];
+
         if (!pClient)
             continue;
-        extra_player_info_t& info = g_PlayerExtraInfo[i];
-
-        //if (!pClient || !g_PlayerInfoList[i + 1].name || !g_PlayerInfoList[i + 1].name[0])
-            //continue;
 
         bool clientVisible = pClient->curstate.messagenum >= localPlayer->curstate.messagenum;
 
         if (pClient->curstate.messagenum == 0 && info.x == 0 && info.y == 0 && info.z == 0)
             continue; // hasn't connected yet
 
-		//if (!clientVisible && !xray)
-			//continue; // Don't show an icon if the player is not in our PVS.
+		if (!clientVisible && !xray)
+			continue; // Don't show an icon if the player is not in our PVS.
 
 		//if (info.specMode && info.specMode != OBS_ROAMING)
 			//continue; // Don't show an icon for spectators
@@ -127,12 +125,12 @@ int CHudNametags::Draw(float flTime)
         float lerpt = (now - lastLerp) / lerpTime;
         Vector lerpori = lastOri[i] + (targetOri[i] - lastOri[i]) * lerpt;
 
-        Vector ori = pClient->origin;//clientVisible ? pClient->origin : lerpori;
+        Vector ori = clientVisible ? pClient->origin : lerpori;
 		Vector tagOri = ori + Vector(0, 0, 40);
 
         bool canSeePlayer = false;
 
-        //if (clientVisible) {
+        if (clientVisible) {
             pmtrace_t tr;
             //gEngfuncs.pEventAPI->EV_SetUpPlayerPrediction(false, true);
             //gEngfuncs.pEventAPI->EV_PushPMStates();
@@ -155,16 +153,16 @@ int CHudNametags::Draw(float flTime)
             if (m_HUD_nametags->value < 2 && !canSeePlayer) {
                 continue;
             }
-        //}
+        }
 
         Vector screenOri = WorldToScreen(tagOri, v_origin, angles, fov);
 
         //int m_iBeam = gEngfuncs.pEventAPI->EV_FindModelIndex("sprites/smoke.spr");
         //gEngfuncs.pEfxAPI->R_BeamPoints(headOri, v_origin, m_iBeam, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1);
-        
+
         bool showHpOnly = m_HUD_nametag_hp->value == 2;
 
-        const char* name = showHpOnly ? "" : g_PlayerInfoList[i].name;
+        const char* name = showHpOnly ? "" : g_PlayerInfoList[i + 1].name;
         int nameWidth, nameHeight;
         GetConsoleStringSize(name, &nameWidth, &nameHeight);
         
@@ -173,24 +171,21 @@ int CHudNametags::Draw(float flTime)
         int hpWidth = 0;
         int hpHeight = 0;
         
-        //if (info.specMode || m_HUD_nametag_hp->value == 0) {
-            //hpStr = "";
-            //hpWidth = 0;
-        //}
-        //else {
+        if (info.specMode || m_HUD_nametag_hp->value == 0) {
+            hpStr = "";
+            hpWidth = 0;
+        }
+        else {
             const char* pad = showHpOnly ? "" : " ";
-hpStr = "";
+            //hpStr = hp ? UTIL_VarArgs("%s%d%%", pad, (int)hp) : " DEAD";
             if (g_PlayerInfoList[i].name == pClient->model->name) {
-hpStr = UTIL_VarArgs("%d%% %s", (int)hp, pClient->model->name);
+                hpStr = UTIL_VarArgs("%d%% %s", (int)hp, pClient->model->name);
             }
             else {
-hpStr = UTIL_VarArgs("%s %d%% %s", g_PlayerInfoList[i].name, (int)hp, pClient->model->name);
+                hpStr = UTIL_VarArgs("%s %d%% %s", g_PlayerInfoList[i].name, (int)hp, pClient->model->name);
             }
-            
-            
-            
             GetConsoleStringSize(hpStr, &hpWidth, &hpHeight);
-        //}
+        }
 
         int tagWidth = nameWidth + hpWidth;
         int tagHeight = nameHeight * 2;
@@ -223,7 +218,7 @@ hpStr = UTIL_VarArgs("%s %d%% %s", g_PlayerInfoList[i].name, (int)hp, pClient->m
         float* color = GetClientColor(i+1);
         RGB nameColor(color[0]*255, color[1]*255, color[2]*255);
 
-        //DrawConsoleString(x, y, name, nameColor);
+       //DrawConsoleString(x, y, name, nameColor);
 
         if (hpWidth) {
             RGB hpColor(255, 255, 255);
@@ -235,7 +230,7 @@ hpStr = UTIL_VarArgs("%s %d%% %s", g_PlayerInfoList[i].name, (int)hp, pClient->m
         }
 
         // show distance to invisible players
-        //if (!canSeePlayer) {
+        if (!canSeePlayer) {
             int meters = V_max(0, (v_origin - tagOri).Length() / 33);
             const char* dist = UTIL_VarArgs("(%dm)", meters);
             int distWidth;
@@ -244,7 +239,7 @@ hpStr = UTIL_VarArgs("%s %d%% %s", g_PlayerInfoList[i].name, (int)hp, pClient->m
             RGB distColor(160, 160, 160);
             x = screenOri.x - distWidth * 0.5f;
             DrawConsoleString(x, y + nameHeight, dist, distColor);
-        //}
+        }
 	}
 
     // update lerp to/from positions
@@ -253,19 +248,17 @@ hpStr = UTIL_VarArgs("%s %d%% %s", g_PlayerInfoList[i].name, (int)hp, pClient->m
 
         memcpy(lastOri, targetOri, sizeof(lastOri));
 
-        for (int i = 0; i < 4096; i++) {
-            cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i);
-            if (!pClient)
-                continue;
+        for (int i = 0; i < MAX_CLIENTS; i++) {
+            cl_entity_s* pClient = gEngfuncs.GetEntityByIndex(i + 1);
             bool clientVisible = pClient->curstate.messagenum >= localPlayer->curstate.messagenum;
 
-            //if (clientVisible) {
+            if (clientVisible) {
                 targetOri[i] = pClient->origin;
-            //}
-            //else {
-                //extra_player_info_t& info = g_PlayerExtraInfo[i];
-                //targetOri[i] = Vector(info.x, info.y, info.z);
-            //}
+            }
+            else {
+                extra_player_info_t& info = g_PlayerExtraInfo[i + 1];
+                targetOri[i] = Vector(info.x, info.y, info.z);
+            }
         } 
     }
 	

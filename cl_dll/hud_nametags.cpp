@@ -173,15 +173,15 @@ int CHudNametags::Draw(float flTime)
         int hpWidth = 0;
         int hpHeight = 0;
         
-        if (info.specMode || m_HUD_nametag_hp->value == 0) {
-            hpStr = "";
-            hpWidth = 0;
-        }
-        else {
+        //if (info.specMode || m_HUD_nametag_hp->value == 0) {
+            //hpStr = "";
+            //hpWidth = 0;
+        //}
+        //else {
             const char* pad = showHpOnly ? "" : " ";
-            hpStr = hp ? UTIL_VarArgs("%s%d%s%s%%", pad, (int)hp, pad, pClient->model->name) : UTIL_VarArgs("%s - %s%%", pad, pClient->model->name);
+            hpStr = hp ? UTIL_VarArgs("%s%d%%%s%s", pad, (int)hp, pad, pClient->model->name) : UTIL_VarArgs(" - %s", pClient->model->name);
             GetConsoleStringSize(hpStr, &hpWidth, &hpHeight);
-        }
+        //}
 
         int tagWidth = nameWidth + hpWidth;
         int tagHeight = nameHeight * 2;

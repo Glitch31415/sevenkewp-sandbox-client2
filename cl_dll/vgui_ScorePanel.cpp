@@ -881,7 +881,7 @@ void ScorePanel::FillGrid()
 					}
 					else {
 						pLabel->setFgColor(255, 0, 0, 0);
-						sprintf(sz, "DEAD");
+						sprintf(sz, "-");
 					}
 					break;
 				}

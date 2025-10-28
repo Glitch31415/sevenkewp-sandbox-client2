@@ -179,7 +179,7 @@ int CHudNametags::Draw(float flTime)
         }
         else {
             const char* pad = showHpOnly ? "" : " ";
-            hpStr = hp ? UTIL_VarArgs("%s%d%%", pad, (int)hp) : " DEAD";
+            hpStr = hp ? UTIL_VarArgs("%s%d%%", pad, (int)hp) : "";
             GetConsoleStringSize(hpStr, &hpWidth, &hpHeight);
         }
 

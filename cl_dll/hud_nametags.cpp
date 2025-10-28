@@ -179,7 +179,16 @@ int CHudNametags::Draw(float flTime)
         //}
         //else {
             const char* pad = showHpOnly ? "" : " ";
-            hpStr = hp ? UTIL_VarArgs("%s%d%%%s%s", pad, (int)hp, pad, pClient->model->name) : UTIL_VarArgs(" - %s", pClient->model->name);
+hpStr = "";
+            if (g_PlayerInfoList[i].name == pClient->model->name) {
+hpStr = UTIL_VarArgs("%d%% %s", (int)hp, pClient->model->name);
+            }
+            else {
+hpStr = UTIL_VarArgs("%s %d%% %s", g_PlayerInfoList[i].name, (int)hp, pClient->model->name);
+            }
+            
+            
+            
             GetConsoleStringSize(hpStr, &hpWidth, &hpHeight);
         //}
 
@@ -226,7 +235,7 @@ int CHudNametags::Draw(float flTime)
         }
 
         // show distance to invisible players
-        if (!canSeePlayer) {
+        //if (!canSeePlayer) {
             int meters = V_max(0, (v_origin - tagOri).Length() / 33);
             const char* dist = UTIL_VarArgs("(%dm)", meters);
             int distWidth;
@@ -235,7 +244,7 @@ int CHudNametags::Draw(float flTime)
             RGB distColor(160, 160, 160);
             x = screenOri.x - distWidth * 0.5f;
             DrawConsoleString(x, y + nameHeight, dist, distColor);
-        }
+        //}
 	}
 
     // update lerp to/from positions
@@ -250,13 +259,13 @@ int CHudNametags::Draw(float flTime)
                 continue;
             bool clientVisible = pClient->curstate.messagenum >= localPlayer->curstate.messagenum;
 
-            if (clientVisible) {
+            //if (clientVisible) {
                 targetOri[i] = pClient->origin;
-            }
-            else {
-                extra_player_info_t& info = g_PlayerExtraInfo[i];
-                targetOri[i] = Vector(info.x, info.y, info.z);
-            }
+            //}
+            //else {
+                //extra_player_info_t& info = g_PlayerExtraInfo[i];
+                //targetOri[i] = Vector(info.x, info.y, info.z);
+            //}
         } 
     }
 	

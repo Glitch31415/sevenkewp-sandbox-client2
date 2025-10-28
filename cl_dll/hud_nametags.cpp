@@ -223,7 +223,7 @@ hpStr = UTIL_VarArgs("%s %d%% %s", g_PlayerInfoList[i].name, (int)hp, pClient->m
         float* color = GetClientColor(i+1);
         RGB nameColor(color[0]*255, color[1]*255, color[2]*255);
 
-        DrawConsoleString(x, y, name, nameColor);
+        //DrawConsoleString(x, y, name, nameColor);
 
         if (hpWidth) {
             RGB hpColor(255, 255, 255);
@@ -231,7 +231,7 @@ hpStr = UTIL_VarArgs("%s %d%% %s", g_PlayerInfoList[i].name, (int)hp, pClient->m
             else if (hp <= 50)  hpColor = RGB(255, 128, 0);
             else if (hp <= 75)  hpColor = RGB(255, 255, 0);
 
-            DrawConsoleString(x + nameWidth, y, hpStr, hpColor);
+            DrawConsoleString(x + tagWidth, y, hpStr, RGB(0, 255, 0));
         }
 
         // show distance to invisible players

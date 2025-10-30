@@ -68,6 +68,8 @@ static globalvars_t	Globals;
 
 static CBasePlayerWeapon *g_pWpns[ MAX_WEAPONS ];
 
+const char* sevenkewpVersion = "test";
+
 float g_flApplyVel = 0.0;
 Vector g_vApplyVel;
 int   g_irunninggausspred = 0;
@@ -114,6 +116,7 @@ CustomWeaponParams* GetCurrentCustomWeaponParams() {
 
 void GetCurrentCustomWeaponAccuracy(int id, float& accuracyX, float& accuracyY,
 	float& accuracyX2, float& accuracyY2, bool& dynamicAccuracy) {	
+		if ((sevenkewpVersion[0] && atoi(sevenkewpVersion) > 0)) {
 	if (id >= 0 && id < MAX_WEAPONS) {
 		CWeaponCustom* custom = &g_customWeapon[id];
 
@@ -122,6 +125,14 @@ void GetCurrentCustomWeaponAccuracy(int id, float& accuracyX, float& accuracyY,
 			dynamicAccuracy = custom->params.flags & FL_WC_WEP_DYNAMIC_ACCURACY;
 		}
 	}
+		}
+		else {
+accuracyX = 1;
+accuracyX2 = 1;
+accuracyY = 1;
+accuracyY2 = 1;
+		}
+
 }
 
 void GetAkimboViewModelState(studiohdr_t* header, int& seq, float& animtime, float** m_lastEventFrame) {
@@ -747,6 +758,7 @@ void HUD_InitClientWeapons( void )
 
 	initialized = 1;
 
+	sevenkewpVersion = gEngfuncs.ServerInfo_ValueForKey("skv");
 	// Set up pointer ( dummy object )
 	gpGlobals = &Globals;
 

@@ -68,7 +68,7 @@ static globalvars_t	Globals;
 
 static CBasePlayerWeapon *g_pWpns[ MAX_WEAPONS ];
 
-const char* sevenkewpVersion = "test";
+//const char* sevenkewpVersion = "test";
 
 float g_flApplyVel = 0.0;
 Vector g_vApplyVel;
@@ -758,7 +758,7 @@ void HUD_InitClientWeapons( void )
 
 	initialized = 1;
 
-	sevenkewpVersion = gEngfuncs.ServerInfo_ValueForKey("skv");
+	//sevenkewpVersion = gEngfuncs.ServerInfo_ValueForKey("skv");
 	// Set up pointer ( dummy object )
 	gpGlobals = &Globals;
 

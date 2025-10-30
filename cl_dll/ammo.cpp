@@ -62,7 +62,7 @@ client_sprite_t *GetSpriteList(client_sprite_t *pList, const char *psz, int iRes
 WeaponsResource gWR;
 
 int g_weaponselect = 0;
-//const char* sevenkewpVersion = "test";
+const char* sevenkewpVersion = "test";
 
 void WeaponsResource :: LoadAllWeaponSprites( void )
 {

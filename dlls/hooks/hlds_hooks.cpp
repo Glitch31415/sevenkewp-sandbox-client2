@@ -918,7 +918,7 @@ UTIL_PrecacheOther("monster_kingpin");
 	std::string clientDataFilesHash = UTIL_HashClientDataFiles();
 	char* serverinfo = (char*)g_engfuncs.pfnGetInfoKeyBuffer(g_engfuncs.pfnPEntityOfEntIndex(0));
 	//g_engfuncs.pfnSetKeyValue(serverinfo, "skv", UTIL_VarArgs("%d", SEVENKEWP_VERSION)); pretend like we aren't sevenkewp bc shit is broken
-	g_engfuncs.pfnSetKeyValue(serverinfo, "skmd5", clientDataFilesHash.c_str());
+	//g_engfuncs.pfnSetKeyValue(serverinfo, "skmd5", clientDataFilesHash.c_str());
 
 	// reset player inventories
 	if (g_clearInventoriesNextMap) {

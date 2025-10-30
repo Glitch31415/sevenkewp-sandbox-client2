@@ -558,9 +558,9 @@ int CHudClientUpdater::Draw(float flTime) {
 		return 1;
 	}
 
-	if (!gHUD.IsSevenKewpServer()) {
+	//if (!gHUD.IsSevenKewpServer()) {
 		return 1;
-	}
+	//}
 
 	int clientVerNum = ver_cvar->value;
 	if (clientVerNum == gHUD.m_sevenkewpVersion) {

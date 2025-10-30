@@ -579,7 +579,7 @@ void CHud::ParseServerInfo() {
 		m_sevenkewpVersion = 0;
 	}
 
-	if (IsSevenKewpServer()) {
+	if (sevenkewpVersion[0] && m_sevenkewpVersion > 0) {
 		const char* serverHash = gEngfuncs.ServerInfo_ValueForKey("skmd5");
 		const char* myHash = UTIL_HashClientDataFiles();
 
